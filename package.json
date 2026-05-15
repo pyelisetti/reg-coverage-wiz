@@ -1,0 +1,25 @@
+{
+  "name": "regulatory-coverage-analyzer",
+  "version": "1.0.0",
+  "description": "Regulatory Test Coverage Analyzer using Claude API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "regulatory",
+    "compliance",
+    "coverage",
+    "analysis"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "multer": "^1.4.5-lts.1",
+    "xlsx": "^0.18.5"
+  }
+}

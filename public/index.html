@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regulatory Test Coverage Analyzer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Sidebar: Form -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1>Coverage Analyzer</h1>
+                <p class="subtitle">AI-powered semantic matching</p>
+            </header>
+
+            <div class="upload-section">
+                <h2>Upload Files</h2>
+
+                <div class="form-group">
+                    <label for="questionnaire-file">
+                        <strong>Questionnaire (.xlsx)</strong>
+                        <span class="label-desc">Regulatory questions</span>
+                    </label>
+                    <input type="file" id="questionnaire-file" name="questionnaire" accept=".xlsx,.xls" />
+                    <span class="file-name" id="questionnaire-name"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="inventory-file">
+                        <strong>Inventory (.xlsx)</strong>
+                        <span class="label-desc">Test inventory</span>
+                    </label>
+                    <input type="file" id="inventory-file" name="inventory" accept=".xlsx,.xls" />
+                    <span class="file-name" id="inventory-name"></span>
+                </div>
+
+                <button id="analyze-btn" class="btn btn-primary" disabled>
+                    Analyze Coverage
+                </button>
+
+                <button id="rerun-btn" class="btn btn-secondary" style="display: none;">
+                    Rerun Analysis
+                </button>
+            </div>
+
+            <div id="error" class="error-container" style="display: none;">
+                <div class="error-content">
+                    <strong>Error:</strong>
+                    <span id="error-message"></span>
+                </div>
+            </div>
+
+            <div id="results-summary" class="results-summary" style="display: none;">
+                <h3>Results Summary</h3>
+                <div id="summary-content"></div>
+            </div>
+        </aside>
+
+        <!-- Right Side: Two Column Layout -->
+        <main class="main-content">
+            <div id="spinner" class="spinner-overlay" style="display: none;">
+                <div class="spinner-content-wrapper">
+                    <div class="spinner"></div>
+                    <p class="spinner-text">Analyzing coverage...</p>
+
+                    <div class="data-preview-container">
+                        <!-- Questionnaire Preview -->
+                        <div class="preview-section">
+                            <h3>Questionnaire Data Preview</h3>
+                            <div class="preview-box" id="questionnaire-preview">
+                                <!-- Will be populated with data preview -->
+                            </div>
+                        </div>
+
+                        <!-- Inventory Preview -->
+                        <div class="preview-section">
+                            <h3>Test Inventory Data Preview</h3>
+                            <div class="preview-box" id="inventory-preview">
+                                <!-- Will be populated with data preview -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left Column: Data Panes -->
+            <div class="content-columns">
+                <div class="left-column">
+                    <div id="data-panes" class="data-panes" style="display: none;">
+                        <!-- Single Pane: Test Inventory -->
+                        <div class="pane inventory-pane single-pane">
+                            <div class="pane-header">
+                                <h2>2LOD Test Inventory</h2>
+                                <div class="pane-controls">
+                                    <button id="pause-inventory" class="control-btn">⏸ Pause</button>
+                                    <span class="item-count" id="inventory-count">0 items</span>
+                                </div>
+                            </div>
+                            <div class="pane-content" id="inventory-content">
+                                <!-- Inventory items will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="welcome-message" class="welcome-message">
+                        <div class="welcome-content">
+                            <h2>Welcome to Coverage Analyzer</h2>
+                            <p>Upload your Excel files and click "Analyze Coverage" to begin</p>
+                            <div class="welcome-icon">📊</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Results & Summary -->
+                <div class="right-column" id="summary-column" style="display: none;">
+                    <!-- Coverage Results Section -->
+                    <div class="coverage-results-section">
+                        <h2 class="section-title">Coverage Results</h2>
+                        <div id="coverage-cards-container">
+                            <!-- Coverage cards will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Executive Summary Section -->
+                    <div class="executive-summary-section">
+                        <h2 class="section-title">Executive Summary</h2>
+                        <div class="summary-box" id="executive-summary">
+                            <p class="empty-message">Analysis results will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
